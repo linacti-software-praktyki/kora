@@ -24,7 +24,6 @@ function GitProjects(props) {
       }
       content={
         <div className="p-24">
-          {/* <DemoContent /> */}
           jakaś treść strony.
         </div>
       }

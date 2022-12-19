@@ -17,8 +17,8 @@ SECRET_KEY = '2rmxim9bjb)1+9eoaj0i@9ho02h8dt2fx6!pq8jptyqg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kora.1kb.pl',]
-CSRF_TRUSTED_ORIGINS = ['https://kora.1kb.pl']
+ALLOWED_HOSTS = ['kora.1kb.pl', 'localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://kora.1kb.pl', 'http://localhost', 'http://127.0.0.1']
 API_V1_STR: str = "/api/v1"
 
 AUTH_USER_MODEL = "user.User"
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Custom Apps
     "app.blog",
     "app.user",
+    "app.gitprojects",
     'django_extensions',
 ]
 
@@ -87,7 +88,7 @@ DATABASES = {
 }
 
 
-DATABASES = {'default': env.db("DATABASE_URL", default="sqlite:////app/app.db")}
+DATABASES = {'default': env.db("DATABASE_URL", default="sqlite:///app/app.db")}
 DATABASES['default']["ATOMIC_REQUESTS"] = True
 
 # Password validation
