@@ -16,5 +16,5 @@ class Project(models.Model):
     credentials = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now=True)
     last_update = models.DateTimeField(auto_now=True)
-    #TODO: insert a relation to users.
+    #TODO: create a relation to users.
     #TODO: change credentials to an array
