@@ -24,6 +24,14 @@ const navigationConfig = [
     icon: 'heroicons-outline:mail',
     url: 'post',
   },
+  {
+    id: 'strona-component',
+    title: 'Strona',
+    translate: 'STRONA',
+    type: 'item',
+    icon: 'heroicons-outline:mail',
+    url: 'strona',
+  },
 ];
 
 export default navigationConfig;
