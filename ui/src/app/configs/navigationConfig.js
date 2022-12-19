@@ -24,6 +24,14 @@ const navigationConfig = [
     icon: 'heroicons-outline:mail',
     url: 'post',
   },
+  {
+    id: 'subpage',
+    title: 'Subpage',
+    translate: 'SUBPAGE',
+    type: 'item',
+    icon: 'heroicons-outline:academic-cap',
+    url: 'subpage',
+  },
 ];
 
 export default navigationConfig;
