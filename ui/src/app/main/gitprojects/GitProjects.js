@@ -14,7 +14,7 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-function GitProjects(props) { 
+const GitProjects = (props) => { 
   return (
     <Root
       header={
