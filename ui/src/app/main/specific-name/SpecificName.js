@@ -28,7 +28,11 @@ function SpecificName(props) {
       }
       content={
         <div className="p-24">
-          <DemoContent />
+          {/* <DemoContent /> */}
+          <p>nowa strona </p>
+          <a href="404">
+            <img style={{height: '100px'}} src="https://www.wprost.pl/_thumb/8f/9e/4626141785c4c4bbc93d12b7caba.jpeg" alt="piesek" srcset="" />
+          </a>
         </div>
       }
       scroll="content"
