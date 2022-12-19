@@ -33,7 +33,7 @@ import React from 'react';
 
 const SpecificName= React.lazy(() => import('./SpecificName'));
 
-const ExampleConfig = {
+const SpecificNameConfig = {
   settings: {
     layout: {
       config: {},
@@ -47,5 +47,5 @@ const ExampleConfig = {
   ],
 };
 
-export default ExampleConfig;
+export default SpecificNameConfig;
 
