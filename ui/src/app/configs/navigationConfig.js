@@ -25,12 +25,12 @@ const navigationConfig = [
     url: 'post',
   },
   {
-    id: 'strona-component',
-    title: 'Strona',
-    translate: 'STRONA',
+    id: 'wojciech-component',
+    title: 'Wojciech',
+    translate: 'WOJCIECH',
     type: 'item',
     icon: 'heroicons-outline:mail',
-    url: 'strona',
+    url: 'wojciech',
   },
 ];
 
