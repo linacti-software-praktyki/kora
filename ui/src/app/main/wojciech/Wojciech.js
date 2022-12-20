@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
+import WojciechContent from './WojciechContent'
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
@@ -24,9 +25,7 @@ function Wojciech(props) {
       }
       content={
         <div className="p-24">
-          <p>
-            Zawartosc
-          </p>
+          <WojciechContent/>
         </div>
       }
       scroll="content"
