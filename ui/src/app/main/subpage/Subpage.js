@@ -14,7 +14,7 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-function SubPage(props) {
+export default function SubPage(props) {
     return (
       <Root
         header={
@@ -40,5 +40,3 @@ function SubPage(props) {
       />
     );
   }
-  
-  export default SubPage;
