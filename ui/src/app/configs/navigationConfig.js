@@ -33,6 +33,14 @@ const navigationConfig = [
     url: 'post',
   },
   {
+    id: 'wojciech-component',
+    title: 'Wojciech',
+    translate: 'WOJCIECH',
+    type: 'item',
+    icon: 'heroicons-outline:mail',
+    url: 'wojciech',
+  },
+  {
     id: 'subpage',
     title: 'Subpage',
     translate: 'SUBPAGE',
