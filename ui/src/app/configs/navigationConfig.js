@@ -24,6 +24,14 @@ const navigationConfig = [
     icon: 'heroicons-outline:mail',
     url: 'post',
   },
+  {
+    id: 'specific-name',
+    title: 'Specific Name',
+    translate: 'SPECIFIC_NAME',
+    type: 'item',
+    icon: 'heroicons-outline:calculator',
+    url: 'specific-name',
+  },
 ];
 
 export default navigationConfig;
