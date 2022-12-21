@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from app.blog.models import Category, Post
+from app.gitprojects.models import Project
 
 
 class BlogCategoryAdmin(admin.ModelAdmin):
@@ -29,3 +30,8 @@ class PostModelAdmin(admin.ModelAdmin):
         model: Post = Post
 
 admin.site.register(Post, PostModelAdmin)
+
+# class ProjectModelAdmin(admin.ModelAdmin):
+
+
+admin.site.register(Project)

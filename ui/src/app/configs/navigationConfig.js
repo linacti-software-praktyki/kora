@@ -9,6 +9,14 @@ i18next.addResourceBundle('ar', 'navigation', ar);
 
 const navigationConfig = [
   {
+    id: 'git-projects', 
+    title: 'projects',
+    translate: 'projects',
+    type: 'item',
+    icon: 'heroicons-outline:chart-pie',
+    url: 'projects'
+  },
+  {
     id: 'example-component',
     title: 'Example',
     translate: 'EXAMPLE',
