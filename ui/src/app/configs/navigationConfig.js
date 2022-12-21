@@ -33,6 +33,14 @@ const navigationConfig = [
     url: 'post',
   },
   {
+    id: 'subpage',
+    title: 'Subpage',
+    translate: 'SUBPAGE',
+    type: 'item',
+    icon: 'heroicons-outline:academic-cap',
+    url: 'subpage',
+  },
+  {
     id: 'specific-name',
     title: 'Specific Name',
     translate: 'SPECIFIC_NAME',
