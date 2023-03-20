@@ -41,6 +41,14 @@ const navigationConfig = [
     url: 'wojciech',
   },
   {
+    id: 'piotr-component',
+    title: 'Piotr',
+    translate: 'PIOTR',
+    type: 'item',
+    icon: 'heroicons-outline:star',
+    url: 'piotr',
+  },
+  {
     id: 'subpage',
     title: 'Subpage',
     translate: 'SUBPAGE',
