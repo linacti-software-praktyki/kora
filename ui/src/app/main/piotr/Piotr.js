@@ -20,7 +20,7 @@ function Piotr(props) {
     <Root
       header={
         <div className="p-24">
-          <h4>Strona Piotra</h4>
+          <h4>Curriculum Vitae Piotra</h4>
         </div>
       }
       content={
