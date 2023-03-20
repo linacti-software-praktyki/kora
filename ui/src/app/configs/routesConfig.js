@@ -18,7 +18,7 @@ import GitProjectsConfig from '../main/gitprojects/GitProjectsConfig';
 
 import SpecificNameConfig from '../main/specific-name/SpecificNameConfig';
 
-const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig  SubpageConfig, WojciechConfig];
+const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig,  SubpageConfig, WojciechConfig];
 
 const routes = [
   ...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),
