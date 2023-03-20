@@ -10,6 +10,7 @@ import ExampleConfig from '../main/example/ExampleConfig';
 import WojciechConfig from '../main/wojciech/WojciechConfig'
 import PostConfig from '../main/post/PostConfig';
 import SubpageConfig from '../main/subpage/SubpageConfig';
+import MatiConfig from "../main/mati/MatiConfig";
 
 
 import GitProjectsConfig from '../main/gitprojects/GitProjectsConfig';
@@ -18,7 +19,7 @@ import GitProjectsConfig from '../main/gitprojects/GitProjectsConfig';
 
 import SpecificNameConfig from '../main/specific-name/SpecificNameConfig';
 
-const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig  SubpageConfig, WojciechConfig];
+const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig , MatiConfig];
 
 const routes = [
   ...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),

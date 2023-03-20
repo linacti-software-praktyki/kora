@@ -41,6 +41,14 @@ const navigationConfig = [
     url: 'wojciech',
   },
   {
+    id: 'mati-component',
+    title: 'Mati',
+    translate: 'MATI',
+    type: 'item',
+    icon: 'heroicons-outline:star',
+    url: 'mati',
+  },
+  {
     id: 'subpage',
     title: 'Subpage',
     translate: 'SUBPAGE',
