@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Wojciech = React.lazy(() => import('./Wojciech'));
+const Dawid = React.lazy(() => import('./Dawid'));
 
-const WojciechConfig = {
+const DawidConfig = {
   settings: {
     layout: {
       config: {},
@@ -10,11 +10,11 @@ const WojciechConfig = {
   },
   routes: [
     {
-      path: 'wojciech',
-      element: <Wojciech />,
+      path: 'dawid',
+      element: <Dawid />,
     },
   ],
 };
 
-export default WojciechConfig;
+export default DawidConfig;
 

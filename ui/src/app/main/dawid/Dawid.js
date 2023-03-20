@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
-import WojciechContent from './WojciechContent'
+import DawidContent from './DawidContent'
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
@@ -15,17 +15,17 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-function Wojciech(props) {
+function Dawid(props) {
   return (
     <Root
       header={
         <div className="p-24">
-          <h4>Strona Wojciecha</h4>
+          <h4>Dawid's page</h4>
         </div>
       }
       content={
         <div className="p-24">
-          <WojciechContent/>
+          <DawidContent/>
         </div>
       }
       scroll="content"
@@ -33,4 +33,4 @@ function Wojciech(props) {
   );
 }
 
-export default Wojciech;
+export default Dawid;
