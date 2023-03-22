@@ -26,9 +26,16 @@ function PiotrContent(){
       <p>
         <ul class="list-disc ml-24">
           <li>
-            <b>Lorem ipsum</b>
+            <b>INF.03. Creating and administering websites, web applications and databases</b>
             <ul class="ml-24">
-              <li>Own business <i>[2020 - present]</i></li>
+              <li>ZSI <i>[2020 - present]</i></li>
+              <li>Place: Kielce</li>
+            </ul>
+          </li>
+          <li>
+            <b>INF.04. Designing, programming and testing applications</b>
+            <ul class="ml-24">
+              <li>ZSI <i>[2020 - present]</i></li>
               <li>Place: Kielce</li>
             </ul>
           </li>
