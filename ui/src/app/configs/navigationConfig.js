@@ -41,6 +41,14 @@ const navigationConfig = [
     url: 'wojciech',
   },
   {
+    id: 'dominik-component',
+    title: 'Dominik',
+    translate: 'DOMINIK',
+    type: 'item',
+    icon: 'heroicons-outline:mail',
+    url: 'dominik',
+  },
+  {
     id: 'subpage',
     title: 'Subpage',
     translate: 'SUBPAGE',
