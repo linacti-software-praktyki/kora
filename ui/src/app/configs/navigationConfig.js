@@ -40,6 +40,16 @@ const navigationConfig = [
     icon: 'heroicons-outline:mail',
     url: 'wojciech',
   },
+
+  {
+    id: 'dawid-component',
+    title: 'Dawid',
+    translate: 'DAWID',
+    type: 'item',
+    icon: 'heroicons-outline:mail',
+    url: 'dawid',
+  },
+
   {
     id: 'subpage',
     title: 'Subpage',
