@@ -41,6 +41,14 @@ const navigationConfig = [
     url: 'wojciech',
   },
   {
+    id: 'dawid-component',
+    title: 'Dawid',
+    translate: 'DAWID',
+    type: 'item',
+    icon: 'heroicons-outline:mail',
+    url: 'dawid',
+  },
+  {
     id: 'piotr-component',
     title: 'Piotr',
     translate: 'PIOTR',
