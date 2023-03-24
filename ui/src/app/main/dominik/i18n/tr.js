@@ -1,5 +1,5 @@
 const locale = {
-  TITLE: 'Örnek Sayfa',
+  TITLE: 'Dominic\'in web sitesi',
 };
 
 export default locale;
