@@ -12,7 +12,7 @@ function DawidContent(){
     </div>
     <div>
         <h3 class="font-medium pb-12">About me:</h3>
-        <p>About me: I am studying computer programming at Zespół Szkół Informatycznych in Kielce. I love web development. I have learned
+        <p>About me: I am studying computer programming at Technical High School for Computer Science in Kielce. I love web development. I have learned
         HTML, MySQL, PHP, JavaScript, CSS, C++, and python. Currently I am learning frameworks for web development, such as Django and React to make my projects better.
         My hobbies beside web development are riding a bike and training. I usually ride a bike and train just to clear my head and think about new projects and solutions for my current projects.
     </p>

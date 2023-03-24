@@ -1,5 +1,5 @@
 const locale = {
-  TITLE: 'مثال على الصفحة',
+  TITLE: 'موقع ديفيد',
 };
 
 export default locale;
