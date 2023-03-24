@@ -24,7 +24,7 @@ function Mati(props) {
         </div>
       }
       content={
-        <div className="p-24">
+        <div className="p-32">
           <MatiContent/>
         </div>
       }
