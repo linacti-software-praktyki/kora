@@ -49,6 +49,22 @@ const navigationConfig = [
     url: 'dominik',
   },
   {
+    id: 'dawid-component',
+    title: 'Dawid',
+    translate: 'DAWID',
+    type: 'item',
+    icon: 'heroicons-outline:mail',
+    url: 'dawid',
+  },
+  {
+    id: 'piotr-component',
+    title: 'Piotr',
+    translate: 'PIOTR',
+    type: 'item',
+    icon: 'heroicons-outline:star',
+    url: 'piotr',
+  },
+  {
     id: 'subpage',
     title: 'Subpage',
     translate: 'SUBPAGE',

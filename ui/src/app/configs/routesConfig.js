@@ -7,7 +7,9 @@ import SignUpConfig from '../main/sign-up/SignUpConfig';
 import SignOutConfig from '../main/sign-out/SignOutConfig';
 import Error404Page from '../main/404/Error404Page';
 import ExampleConfig from '../main/example/ExampleConfig';
-import WojciechConfig from '../main/wojciech/WojciechConfig'
+import WojciechConfig from '../main/wojciech/WojciechConfig';
+import PiotrConfig from '../main/piotr/PiotrConfig';
+import DawidConfig from '../main/dawid/DawidConfig';
 import PostConfig from '../main/post/PostConfig';
 import SubpageConfig from '../main/subpage/SubpageConfig';
 
@@ -19,7 +21,8 @@ import GitProjectsConfig from '../main/gitprojects/GitProjectsConfig';
 import SpecificNameConfig from '../main/specific-name/SpecificNameConfig';
 import DominikConfig from '../main/dominik/DominikConfig';
 
-const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, DominikConfig];
+
+const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, DawidConfig, PiotrConfig, DominikConfig];
 
 const routes = [
   ...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),
