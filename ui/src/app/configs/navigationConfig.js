@@ -98,14 +98,6 @@ const navigationConfig = [
     url: 'invoices',
   },
   {
-    id: 'work-tracker-component',
-    title: 'Work Tracker',
-    translate: 'WORK_TRACKER',
-    type: 'item',
-    icon: 'heroicons-outline:star',
-    url: 'work-tracker',
-  },
-  {
     id: 'subpage',
     title: 'Subpage',
     translate: 'SUBPAGE',
