@@ -33,6 +33,30 @@ const navigationConfig = [
     url: 'post',
   },
   {
+    id: 'expenses-component',
+    title: 'Expenses',
+    translate: 'EXPENSES',
+    type: 'item',
+    icon: 'heroicons-outline:star',
+    url: 'expenses',
+  },
+  {
+    id: 'work-tracking-component',
+    title: 'Work Tracking',
+    translate: 'WORK_TRACKING',
+    type: 'item',
+    icon: 'heroicons-outline:star',
+    url: 'work-tracking',
+  },
+  {
+    id: 'invoices-component',
+    title: 'Invoices',
+    translate: 'INVOICES',
+    type: 'item',
+    icon: 'heroicons-outline:star',
+    url: 'invoices',
+  },
+  {
     id: 'wojciech-component',
     title: 'Wojciech',
     translate: 'WOJCIECH',
@@ -56,6 +80,7 @@ const navigationConfig = [
     icon: 'heroicons-outline:star',
     url: 'mati',
   },
+
   {
     id: 'dawid-component',
     title: 'Dawid',

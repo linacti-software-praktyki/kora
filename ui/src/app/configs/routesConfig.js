@@ -13,17 +13,19 @@ import DawidConfig from '../main/dawid/DawidConfig';
 import PostConfig from '../main/post/PostConfig';
 import SubpageConfig from '../main/subpage/SubpageConfig';
 import MatiConfig from "../main/mati/MatiConfig";
-
-
+import SpecificNameConfig from '../main/specific-name/SpecificNameConfig';
+import DominikConfig from '../main/dominik/DominikConfig';
+import ExpensesConfig from "../main/expenses/ExpensesConfig";
+import InvoicesConfig from "../main/invoices/InvoicesConfig";
+import WorkTrackingConfig from "../main/work-tracking/WorkTrackingConfig";
 import GitProjectsConfig from '../main/gitprojects/GitProjectsConfig';
 
 // const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, GitProjectsConfig];
 
-import SpecificNameConfig from '../main/specific-name/SpecificNameConfig';
-import DominikConfig from '../main/dominik/DominikConfig';
 
 
-const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, MatiConfig, DawidConfig, PiotrConfig, DominikConfig];
+
+const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, MatiConfig, DawidConfig, PiotrConfig, DominikConfig, ExpensesConfig, InvoicesConfig, WorkTrackingConfig];
 
 
 const routes = [
