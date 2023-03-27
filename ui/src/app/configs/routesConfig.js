@@ -7,21 +7,21 @@ import SignUpConfig from '../main/sign-up/SignUpConfig';
 import SignOutConfig from '../main/sign-out/SignOutConfig';
 import Error404Page from '../main/404/Error404Page';
 import ExampleConfig from '../main/example/ExampleConfig';
-import WojciechConfig from '../main/wojciech/WojciechConfig';
-import PiotrConfig from '../main/piotr/PiotrConfig';
-import DawidConfig from '../main/dawid/DawidConfig';
+import WojciechConfig from '../main/wojciech/WojciechConfig'
 import PostConfig from '../main/post/PostConfig';
 import SubpageConfig from '../main/subpage/SubpageConfig';
 import MatiConfig from "../main/mati/MatiConfig";
-
-
+import SpecificNameConfig from '../main/specific-name/SpecificNameConfig';
+import ExpensesConfig from "../main/expenses/ExpensesConfig";
+import InvoicesConfig from "../main/invoices/InvoicesConfig";
+import WorkTrackerConfig from "../main/work-tracker/WorkTrackerConfig";
 import GitProjectsConfig from '../main/gitprojects/GitProjectsConfig';
 
 // const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, GitProjectsConfig];
 
-import SpecificNameConfig from '../main/specific-name/SpecificNameConfig';
 
-const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, MatiConfig, DawidConfig, PiotrConfig];
+
+const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, ExpensesConfig, InvoicesConfig, WorkTrackerConfig , MatiConfig];
 
 const routes = [
   ...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),

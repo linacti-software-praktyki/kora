@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
-import MatiContent from './MatiContent'
+import WorkTrackerContent from './WorkTrackerContent'
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
@@ -15,17 +15,17 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-function Mati(props) {
+function WorkTracker(props) {
   return (
     <Root
       header={
         <div className="p-24">
-          <h4>Mati Page</h4>
+          <h4>Work Tracker</h4>
         </div>
       }
       content={
         <div className="p-32">
-          <MatiContent/>
+          <WorkTrackerContent/>
         </div>
       }
       scroll="content"
@@ -33,4 +33,4 @@ function Mati(props) {
   );
 }
 
-export default Mati;
+export default WorkTracker;

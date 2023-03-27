@@ -2,7 +2,9 @@ const locale = {
   APPLICATIONS: 'تطبيقات',
   EXAMPLE: 'مثال',
   MATI: 'ماثيو',
-  PIOTR: 'بطرس'
+    EXPENSES: 'مصاريف',
+    INVOICES: 'فواتير',
+    WORK_TRACKER: 'متتبع العمل',
 };
 
 export default locale;

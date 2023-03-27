@@ -15,12 +15,12 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-function Mati(props) {
+function Invoices(props) {
   return (
     <Root
       header={
         <div className="p-24">
-          <h4>Mati Page</h4>
+          <h4>Invoices</h4>
         </div>
       }
       content={
@@ -33,4 +33,4 @@ function Mati(props) {
   );
 }
 
-export default Mati;
+export default Invoices;
