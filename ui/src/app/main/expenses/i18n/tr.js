@@ -1,5 +1,5 @@
 const locale = {
-  TITLE: 'Expenses\'nin web sitesi',
+  TITLE: 'Giderler sayfası'
 };
 
 export default locale;

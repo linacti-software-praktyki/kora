@@ -1,7 +1,6 @@
 import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
-
-import InvoicesContent from './InvoicesContent';
+import WorkTrackingContent from './WorkTrackingContent'
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
@@ -16,17 +15,17 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-function Invoices(props) {
+function WorkTracking(props) {
   return (
     <Root
       header={
         <div className="p-24">
-          <h4>Invoices</h4>
+          <h4>Work Tracking</h4>
         </div>
       }
       content={
         <div className="p-32">
-          <InvoicesContent/>
+          <WorkTrackingContent/>
         </div>
       }
       scroll="content"
@@ -34,4 +33,4 @@ function Invoices(props) {
   );
 }
 
-export default Invoices;
+export default WorkTracking;

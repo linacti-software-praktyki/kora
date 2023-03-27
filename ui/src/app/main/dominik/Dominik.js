@@ -1,7 +1,6 @@
 import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
-
-import InvoicesContent from './InvoicesContent';
+import DominikContent from './DominikContent'
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
@@ -16,17 +15,17 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-function Invoices(props) {
+function Dominik(props) {
   return (
     <Root
       header={
         <div className="p-24">
-          <h4>Invoices</h4>
+          <h4>Strona Dominika</h4>
         </div>
       }
       content={
-        <div className="p-32">
-          <InvoicesContent/>
+        <div className="p-24">
+          <DominikContent/>
         </div>
       }
       scroll="content"
@@ -34,4 +33,4 @@ function Invoices(props) {
   );
 }
 
-export default Invoices;
+export default Dominik;

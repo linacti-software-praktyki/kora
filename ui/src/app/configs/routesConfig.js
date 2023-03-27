@@ -12,16 +12,17 @@ import PostConfig from '../main/post/PostConfig';
 import SubpageConfig from '../main/subpage/SubpageConfig';
 import MatiConfig from "../main/mati/MatiConfig";
 import SpecificNameConfig from '../main/specific-name/SpecificNameConfig';
+import DominikConfig from '../main/dominik/DominikConfig';
 import ExpensesConfig from "../main/expenses/ExpensesConfig";
 import InvoicesConfig from "../main/invoices/InvoicesConfig";
-import WorkTrackerConfig from "../main/work-tracker/WorkTrackerConfig";
+import WorkTrackingConfig from "../main/work-tracking/WorkTrackingConfig";
 import GitProjectsConfig from '../main/gitprojects/GitProjectsConfig';
+import DawidConfig from "../main/dawid/DawidConfig";
+import PiotrConfig from "../main/piotr/PiotrConfig";
 
 // const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, GitProjectsConfig];
 
-
-
-const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, ExpensesConfig, InvoicesConfig, WorkTrackerConfig , MatiConfig];
+const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, MatiConfig, DawidConfig, PiotrConfig, DominikConfig, ExpensesConfig, InvoicesConfig, WorkTrackingConfig];
 
 const routes = [
   ...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),
