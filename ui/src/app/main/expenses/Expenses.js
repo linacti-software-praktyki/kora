@@ -24,7 +24,7 @@ function Expenses(props) {
         </div>
       }
       content={
-        <div className="p-32">
+        <div className="py-32">
           <ExpensesContent/>
         </div>
       }
