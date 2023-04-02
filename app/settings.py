@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "app.user",
     "app.gitprojects",
     "app.finances",
+    "app.trackerofwork",
     'django_extensions',
 ]
 
