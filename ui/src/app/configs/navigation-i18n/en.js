@@ -4,7 +4,7 @@ const locale = {
   SPECIFIC_NAME: 'Specific Name',
   MATI : 'Matthew',
   PIOTR: 'Peter',
-  EXPENSES: 'Expenses',
+  FINANCES: 'Finances',
   INVOICES: 'Invoices',
   WORK_TRACKING: 'Work Tracking'
 };

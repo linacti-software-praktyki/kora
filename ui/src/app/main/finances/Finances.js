@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import FusePageSimple from '@fuse/core/FusePageSimple';
-import ExpensesContent from './ExpensesContent'
+import FinancesContent from './FinancesContent'
 
 const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-header': {
@@ -15,17 +15,17 @@ const Root = styled(FusePageSimple)(({ theme }) => ({
   '& .FusePageSimple-sidebarContent': {},
 }));
 
-function Expenses(props) {
+function Finances(props) {
   return (
     <Root
       header={
         <div className="p-24">
-          <h4>Expenses</h4>
+          <h4>Finances</h4>
         </div>
       }
       content={
         <div className="py-32">
-          <ExpensesContent/>
+          <FinancesContent/>
         </div>
       }
       scroll="content"
@@ -33,4 +33,4 @@ function Expenses(props) {
   );
 }
 
-export default Expenses;
+export default Finances;

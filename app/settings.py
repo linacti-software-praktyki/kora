@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django_extensions',
     # 'invoices.apps.InvoicesConfig',
     'app.invoices',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
