@@ -49,4 +49,3 @@ class TrackerCRUD(BaseCRUD[Poject, ProjectPost, ProjectPost, SLUGTYPE]):
         """Delete an item."""
         self.model.objects.filter(slug=slug).delete()
         return {"detail": "Successfully deleted!"}
-
