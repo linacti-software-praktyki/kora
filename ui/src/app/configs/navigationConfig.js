@@ -33,12 +33,12 @@ const navigationConfig = [
     url: 'post',
   },
   {
-    id: 'expenses-component',
-    title: 'Expenses',
-    translate: 'EXPENSES',
+    id: 'finances-component',
+    title: 'Finances',
+    translate: 'FINANCES',
     type: 'item',
     icon: 'heroicons-outline:star',
-    url: 'expenses',
+    url: 'finances',
   },
   {
     id: 'work-tracking-component',

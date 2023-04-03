@@ -3,7 +3,7 @@ const locale = {
   EXAMPLE: 'Örnek Sayfa',
   MATI: 'Matta',
   PIOTR: 'Petrus',
-  EXPENSES: 'Masraflar',
+  EXPENSES: 'Giderler',
   INVOICES: 'Faturalar',
   WORK_TRACKING: 'Iş takibi'
 };

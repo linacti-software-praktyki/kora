@@ -3,7 +3,7 @@ const locale = {
     EXAMPLE: 'مثال',
     MATI: 'ماثيو',
     PIOTR: 'بطرس',
-    EXPENSES: 'نفقات',
+    FINANCES: 'المصروفات',
     INVOICES: 'الفواتير',
     WORK_TRACKING: 'تتبع العمل',
 };
