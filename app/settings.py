@@ -41,8 +41,12 @@ INSTALLED_APPS = [
     "app.blog",
     "app.user",
     "app.gitprojects",
+    "app.finances",
     "app.trackerofwork",
     'django_extensions',
+    # 'invoices.apps.InvoicesConfig',
+    'app.invoices',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

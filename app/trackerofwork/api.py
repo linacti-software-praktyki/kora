@@ -51,6 +51,7 @@ class ProjectCRUD(BaseCRUD[Project, CreateProject, UpdateProject, SLUGTYPE]):
         return {"detail": "Successfully deleted!"}
 
 
+
 class MilestonesCRUD(BaseCRUD[Milestones, CreateMilestones, UpdateMilestones, SLUGTYPE]):
     """
     CRUD Operation for blog posts
