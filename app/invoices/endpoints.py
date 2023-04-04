@@ -10,21 +10,21 @@ router = APIRouter()
 
 @router.get("/report/", response_model=list[ClientWithInvoicesOut])
 def get_clients_with_invoices():
-    """Endpoint to get report all clients with their financial operations"""
+    """Endpoint to get report all clients with their invoices"""
 
     return clients.get_clients_with_invoices()
 
 
 @router.get("/report/{slug}/", response_model=ClientWithInvoicesOut)
 def get_client_with_invoices(slug: str):
-    """Endpoint to get client with his financial operations"""
+    """Endpoint to get client with his invoices"""
 
     return clients.get_client_with_invoices(slug=slug)
 
 
 @router.get("/report/{slug}/{id}/", response_model=InvoicesOut)
 def get_operation_by_client(slug: str, id: int):
-    """Endpoint to get single financial operation belonging to particular client"""
+    """Endpoint to get single invoice belonging to particular client"""
 
     return invoices.get_operation_by_client(slug=slug, id=id)
 
@@ -33,14 +33,14 @@ def get_operation_by_client(slug: str, id: int):
 
 @router.get("/operations", response_model=list[InvoicesOut])
 def get_multiple_invoices(offset: int = 0, limit: int = 10):
-    """Endpoint to get multiple financial operation based on offset and limit values"""
+    """Endpoint to get multiple invoices based on offset and limit values"""
 
     return invoices.get_multiple(offset=offset, limit=limit)
 
 
 @router.post("/operations/{slug}/", response_model=CreateInvoices)
 def create_invoice(slug: str, request: CreateInvoices):
-    """Create a financial operation"""
+    """Create a invoice"""
 
     return invoices.create(slug=slug, new_item=request)
 
@@ -54,7 +54,7 @@ def update_invoice(slug: str, id: int, request: UpdateInvoices):
 
 @router.delete("/operations/{slug}/{id}/")
 def delete_invoice(slug: str, id: int):
-    """Delete the financial operation"""
+    """Delete the invoice"""
 
     return invoices.delete(id=id, slug=slug)
 

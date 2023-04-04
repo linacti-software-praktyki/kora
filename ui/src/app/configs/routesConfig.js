@@ -15,14 +15,13 @@ import SpecificNameConfig from '../main/specific-name/SpecificNameConfig';
 import DominikConfig from '../main/dominik/DominikConfig';
 import FinancesConfig from "../main/finances/FinancesConfig";
 import InvoicesConfig from "../main/invoices/InvoicesConfig";
-import WorkTrackingConfig from "../main/work-tracking/WorkTrackingConfig";
 import GitProjectsConfig from '../main/gitprojects/GitProjectsConfig';
 import DawidConfig from "../main/dawid/DawidConfig";
 import PiotrConfig from "../main/piotr/PiotrConfig";
 
 // const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, GitProjectsConfig];
 
-const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, MatiConfig, DawidConfig, PiotrConfig, DominikConfig, FinancesConfig, InvoicesConfig, WorkTrackingConfig];
+const routeConfigs = [ExampleConfig, PostConfig, SignOutConfig, SignInConfig, SignUpConfig, SpecificNameConfig, GitProjectsConfig, SubpageConfig, WojciechConfig, MatiConfig, DawidConfig, PiotrConfig, DominikConfig, FinancesConfig, InvoicesConfig];
 
 const routes = [
   ...FuseUtils.generateRoutesFromConfigs(routeConfigs, settingsConfig.defaultAuth),

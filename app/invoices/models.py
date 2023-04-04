@@ -40,7 +40,7 @@ class Invoices(models.Model):
 
 
     def __str__(self):
-        return f"{self.payment} ({self.cashflow_date}): {self.number} - {self.price} - {self.clients} - {self.products}"
+        return f"{self.payment} ({self.date}): {self.number} - {self.clients} - {self.products}"
 
 
 

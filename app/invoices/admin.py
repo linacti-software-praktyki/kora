@@ -15,7 +15,7 @@ admin.site.register(Products, ProductsAdmin)
 class InvoicesAdmin(admin.ModelAdmin):
     list_display: list = ["payment", "number", "date","clients","get_products"]
     list_display_links: list = ["number"]
-    list_filter: list = ["payment", "number", "price", "date"]
+    list_filter: list = ["payment", "number", "date"]
     search_fields: list = ["payment", "number"]
     list_per_page: int = 10
     ordering: tuple = ("-id", )
