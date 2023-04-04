@@ -33,7 +33,7 @@ class Invoices(models.Model):
         default="CASH"
     )
     number: int = models.IntegerField(unique=True,max_length=30)
-    cashflow_date: date = models.DateField(default="2000-01-01")    #dodac timezone.now()
+    date: date = models.DateField(default="2000-01-01")    #dodac timezone.now()
     clients: any = models.ForeignKey(Clients, on_delete=models.CASCADE)
     products: any = models.ManyToManyField(Products)
 

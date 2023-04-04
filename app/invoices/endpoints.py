@@ -47,7 +47,7 @@ def create_invoice(slug: str, request: CreateInvoices):
 
 @router.put("/operations/{slug}/{id}/", response_model=InvoicesOut)
 def update_invoice(slug: str, id: int, request: UpdateInvoices):
-    """Update the financial operation"""
+    """Update the invoice"""
 
     return invoices.update(id=id, slug=slug, new_item=request)
 

@@ -5,7 +5,7 @@ class InvoicesBase(BaseModel):
     """Base fields for Invoices"""
     payment: str
     number: str
-    cashflow_date: date
+    date: date
     clients: int
     products: object
 
