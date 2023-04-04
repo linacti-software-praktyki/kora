@@ -3,10 +3,11 @@ from datetime import date
 
 class InvoicesBase(BaseModel):
     """Base fields for Invoices"""
-    type: str
-    description: str
-    amount: float
+    payment: str
+    number: str
     cashflow_date: date
+    clients: int
+    products: object
 
     class Config:
         orm_mode: bool = True
@@ -52,5 +53,5 @@ class ClientWithInvoicesOut(ClientsBase):
 
     slug: str
     Invoices: list[InvoicesOut]
-    summary: float
-    prediction: str
+    # summary: float
+    # prediction: str

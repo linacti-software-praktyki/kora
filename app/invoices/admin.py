@@ -4,7 +4,7 @@ from .models import Invoices, Clients, Products
 
 
 class ProductsAdmin(admin.ModelAdmin):
-    list_display: list = ["name"]
+    list_display: list = ["name","slug","price","quantity"]
     search_fields: list = ["name"]
     list_per_page: list = 10
     ordering: tuple = ("-id",)
@@ -13,7 +13,7 @@ admin.site.register(Products, ProductsAdmin)
 
 
 class InvoicesAdmin(admin.ModelAdmin):
-    list_display: list = ["payment", "number", "price", "cashflow_date","clients","get_products"]
+    list_display: list = ["payment", "number", "cashflow_date","clients","get_products"]
     list_display_links: list = ["number"]
     list_filter: list = ["payment", "number", "price", "cashflow_date"]
     search_fields: list = ["payment", "number"]

@@ -15,7 +15,7 @@ class Products(models.Model):
     quantity: int = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.name,self.price
+        return self.name,self.slug,self.price,self.quantity
 
 class Clients(models.Model):
     name: str = models.CharField(max_length=80, unique=True)
@@ -33,7 +33,6 @@ class Invoices(models.Model):
         default="CASH"
     )
     number: int = models.IntegerField(unique=True,max_length=30)
-    price: float = models.DecimalField(default=0, max_digits=10, decimal_places=2)
     cashflow_date: date = models.DateField(default="2000-01-01")    #dodac timezone.now()
     clients: any = models.ForeignKey(Clients, on_delete=models.CASCADE)
     products: any = models.ManyToManyField(Products)
