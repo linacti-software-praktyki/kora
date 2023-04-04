@@ -1,16 +1,134 @@
 import { useEffect, useRef, useState } from 'react';
 
+function AddFinanceRow({ setIsAdd, setData, data, slug }) {
+  const dataTypes = {
+    type: 'string',
+    description: 'string',
+    amount: 'number',
+    cashflow_date: 'date',
+  };
+
+  const [inputs, setInputs] = useState({
+    type: 'EXPENSE',
+    description: '',
+    amount: 0,
+    cashflow_date: Date.now(),
+  });
+  const [isChecked, setIsChecked] = useState(false);
+  const checkbox = useRef(null);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'type') setIsChecked(checkbox.current.checked);
+    name === 'type'
+      ? setInputs((values) => ({ ...values, [name]: !isChecked ? 'INCOME' : 'EXPENSE' }))
+      : setInputs((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = async () => {
+    console.log(inputs);
+    console.log(JSON.stringify(inputs));
+    setIsAdd(null);
+    await fetch(`https://kora.1kb.pl/api/v1/finances/operations/${slug}/`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+        Allow: 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      },
+      body: JSON.stringify(inputs),
+    }).then(setData(!data));
+  };
+
+  return (
+    <tr>
+      {Object.keys(inputs).map((key) => {
+        if (key === 'type')
+          return (
+            <td className="text-center">
+              <input
+                onChange={() => handleInputChange}
+                type="checkbox"
+                ref={checkbox}
+                name={key}
+                checked={isChecked}
+              />
+            </td>
+          );
+        if (key === 'id') return null;
+        return (
+          <td className="w-1/3">
+            <input
+              name={key}
+              onChange={() => handleInputChange}
+              className="py-12 px-8 w-full  border-t-2 border-black"
+              type={dataTypes[key]}
+              placeholder={dataTypes[key]}
+            />
+          </td>
+        );
+      })}
+
+      <td className="justify-center flex items-center gap-12 py-12 px-8">
+        <button
+          className="bg-amber-700 py-4 px-8 text-white font-bold w-68"
+          onClick={() => setIsAdd(false)}
+        >
+          Cancel
+        </button>
+        <button
+          className="bg-green py-4 px-8 text-white font-bold w-68"
+          onClick={() => handleSubmit()}
+        >
+          Confirm
+        </button>
+      </td>
+    </tr>
+  );
+}
+
 function FinancesTable({ itemData, setData, data }) {
   const finances = itemData.finances.map((item) => {
     return item;
   });
   const [isEdit, setIsEdit] = useState(null);
+  const [isAdd, setIsAdd] = useState(false);
 
-  if (finances.length === 0) return <p className="text-center py-24">No data</p>;
+  if (finances.length === 0)
+    return (
+      <div>
+        <table className="w-full">
+          <tbody>
+            <td>
+              <button
+                className="bg-green py-4 my-12 px-8 text-white font-bold w-144"
+                onClick={setIsAdd(true)}
+              >
+                Add new finance
+              </button>
+            </td>
+          </tbody>
+        </table>
+        <p className="text-center py-24 text-2xl">No finances records</p>
+      </div>
+    );
 
   return (
     <table className="w-full">
       <tbody>
+        <tr className="mt-12">
+          <td>
+            <button
+              className="bg-green py-4 my-12 px-8 text-white font-bold w-144"
+              onClick={setIsAdd(true)}
+            >
+              Add new finance
+            </button>
+          </td>
+        </tr>
         <tr>
           {Object.keys(finances[0]).map((item) => {
             const fixedItem = item.replace(/_/g, ' ');
@@ -19,6 +137,7 @@ function FinancesTable({ itemData, setData, data }) {
           })}
           <th className="p-8">Actions</th>
         </tr>
+        
         {finances.map((item, index) => {
           if (item.id === isEdit)
             return (
@@ -73,13 +192,19 @@ function FinanceRow({ item, isEdit, index, setIsEdit, editted, setData, slug, da
       : setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    console.log(inputs);
+    console.log(JSON.stringify(inputs));
+    setIsEdit(null);
     await fetch(`https://kora.1kb.pl/api/v1/finances/operations/${slug}/${index + 1}/`, {
       method: 'PUT',
+      mode: 'cors',
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         accept: 'application/json',
+        Allow: 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
       },
       body: JSON.stringify(inputs),
     }).then(setData(!data));
@@ -88,6 +213,14 @@ function FinanceRow({ item, isEdit, index, setIsEdit, editted, setData, slug, da
   const handleDelete = async (id) => {
     await fetch(`https://kora.1kb.pl/api/v1/finances/operations/${slug}/${id + 1}/`, {
       method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+        Allow: 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      },
     }).then(setData(!data));
   };
 
@@ -124,10 +257,9 @@ function FinanceRow({ item, isEdit, index, setIsEdit, editted, setData, slug, da
             <input
               name={key}
               onChange={handleInputChange}
-              className="py-12 px-8 w-full"
+              className="py-12 px-8 bg-transparent border-t-2 border-black w-full"
               type={dataTypes[key]}
               placeholder={item[key]}
-              value={item[key]}
             />
           </td>
         );
@@ -142,7 +274,7 @@ function FinanceRow({ item, isEdit, index, setIsEdit, editted, setData, slug, da
           </button>
           <button
             className="bg-green py-4 px-8 text-white font-bold w-68"
-            onClick={() => handleSubmit}
+            onClick={() => handleSubmit()}
           >
             Confirm
           </button>
@@ -171,11 +303,15 @@ function FinancesPersonTable({ item, index, setIsPEdit, editted, setData, data }
   const [name, setName] = useState(item.name);
   const handleSubmit = async () => {
     console.log(name);
-    await fetch(`https://kora.1kb.pl/api/v1/finances/people/${item.slug}`, {
+    await fetch(`https://kora.1kb.pl/api/v1/finances/people/${item.slug}/`, {
       method: 'PUT',
+      mode: 'cors',
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         accept: 'application/json',
+        Allow: 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
       },
       body: JSON.stringify({
         name,
@@ -186,6 +322,14 @@ function FinancesPersonTable({ item, index, setIsPEdit, editted, setData, data }
   const handleDelete = async (slug) => {
     await fetch(`https://kora.1kb.pl/api/v1/finances/people/${slug}`, {
       method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        Allow: 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      },
     }).then(setData(!data));
   };
 
@@ -195,7 +339,7 @@ function FinancesPersonTable({ item, index, setIsPEdit, editted, setData, data }
   };
 
   return (
-    <div key={index} className="mt-24">
+    <div key={index} className="my-24">
       <div className="border-t-4">
         {!editted ? (
           <div className="text-2xl py-12 px-8 font-bold float-left">{item.name}</div>
@@ -252,13 +396,6 @@ function FinancesPersonTable({ item, index, setIsPEdit, editted, setData, data }
             <th>Prediction:</th>
             <td colSpan={4}>{item.prediction}</td>
           </tr>
-          <tr className="text-center mt-12">
-            <td>
-              <button className="bg-green py-4 px-8 text-white font-bold w-144">
-                Add new finance
-              </button>
-            </td>
-          </tr>
         </tbody>
       </table>
       <FinancesTable itemData={item} data={data} setData={setData} />
@@ -270,11 +407,16 @@ function AddPersonTable({ setAddPerson, setData, data }) {
   const [name, setName] = useState('');
 
   const handleAdd = async () => {
-    await fetch(`https://kora.1kb.pl/api/v1/finances/people`, {
-      method: 'POST ',
+    setAddPerson(false);
+    await fetch(`https://kora.1kb.pl/api/v1/finances/people/`, {
+      mode: 'cors',
+      method: 'POST',
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        'accept': 'application/json',
+        accept: 'application/json',
+        Allow: 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
       },
       body: JSON.stringify({
         name,
@@ -283,11 +425,11 @@ function AddPersonTable({ setAddPerson, setData, data }) {
   };
 
   return (
-    <div className="mt-24">
+    <div className="my-24">
       <div className="border-t-4">
         <input
           name="name"
-          className="py-12 px-8 text-2xl font-bold float-left"
+          className="py-12 px-8 text-2xl font-bold float-left border-t-2 border-black"
           type="string"
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}
@@ -295,9 +437,12 @@ function AddPersonTable({ setAddPerson, setData, data }) {
         />
         <div className="float-right">
           <div className="justify-center flex items-center gap-12 py-12 px-8">
-            <button className="bg-green py-4 px-8 text-white font-bold w-68"
-            onClick={() => handleAdd}
-            >Confirm</button>
+            <button
+              className="bg-green py-4 px-8 text-white font-bold w-68"
+              onClick={() => handleAdd()}
+            >
+              Confirm
+            </button>
             <button
               className="bg-red py-4 px-8 text-white font-bold w-68"
               onClick={() => setAddPerson(false)}
@@ -319,10 +464,24 @@ function FinancesContent() {
   const [changeData, setChangeData] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://kora.1kb.pl/api/v1/finances/report/');
-      const resData = await response.json();
-      setData(resData);
+    console.log('fetching data');
+
+    const fetchData = () => {
+      setTimeout(async () => {
+        const response = await fetch('https://kora.1kb.pl/api/v1/finances/report/', {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            accept: 'application/json',
+            Allow: 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          },
+        });
+        const resData = await response.json();
+        setData(resData);
+      }, '100');
     };
     fetchData();
   }, [changeData]);
@@ -337,12 +496,13 @@ function FinancesContent() {
         >
           Add new person
         </button>
+        {addPerson && (
+          <AddPersonTable setAddPerson={setAddPerson} data={changeData} setData={setChangeData} />
+        )}
       </div>
       {data.length === 0 && NoData}
-      {addPerson && (
-        <AddPersonTable setAddPerson={setAddPerson} data={changeData} setData={setChangeData} />
 
-      )}<br />
+      <br />
       {data.map((item, index) => {
         if (item.slug === isPEdit && !addPerson)
           return (

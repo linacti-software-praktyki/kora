@@ -47,7 +47,7 @@ class InvoicesCRUD(BaseCRUD[Invoices, CreateInvoices, UpdateInvoices, SLUGTYPE])
 
         new_item = jsonable_encoder(new_item)
         client = Clients.objects.get(slug=slug)
-        query = client.Invoices_set.create(**new_item)
+        query = client.invoices_set.create(**new_item)
 
         return query
 

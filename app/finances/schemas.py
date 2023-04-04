@@ -17,14 +17,12 @@ class CreateFinances(FinancesBase):
 
 class UpdateFinances(FinancesBase):
     """Fields for updating finances"""
-    
-    people: int
+    ...
 
 class FinancesOut(FinancesBase):
     """Response for finances"""
 
     id: int
-    people: int
 
 #/////////////////////////////
 class PeopleBase(BaseModel):

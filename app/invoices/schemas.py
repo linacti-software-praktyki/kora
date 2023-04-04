@@ -14,7 +14,7 @@ class InvoicesBase(BaseModel):
 
 class CreateInvoices(InvoicesBase):
     """Fields for creating Invoices"""
-    ...
+    product : object
 
 class UpdateInvoices(InvoicesBase):
     """Fields for updating Invoices"""
