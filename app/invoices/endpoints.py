@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from .api import clients, invoices
-from .schemas import (CreateClient, UpdateClient, ClientOut, ClientWithInvoicesOut, CreateInvoices, UpdateInvoices, InvoicesOut)
+from .api import clients, invoices, products
+from .schemas import (CreateClient, UpdateClient, ClientOut, ClientWithInvoicesOut, CreateInvoices, UpdateInvoices, InvoicesOut,UpdateProduct, CreateProduct, ProductOut)
 
 router = APIRouter()
 
@@ -94,3 +94,40 @@ def delete_client(slug: str):
     """Endpoint to delete a client"""
 
     return clients.delete(slug=slug)
+
+
+
+
+@router.get("/products", response_model=list[ProductOut])
+def get_multiple_products(offset: int = 0, limit: int = 10):
+    """Endpoint to get multiple products based on offset and limit values"""
+
+    return products.get_multiple(offset=offset, limit=limit)
+
+
+@router.get("/products/{slug}/", response_model=ProductOut)
+def get_product(slug: str):
+    """Endpoint to get product"""
+
+    return products.get(slug=slug)
+
+
+@router.post("/products/", response_model=CreateProduct)
+def create_product(request: CreateProduct):
+    """Endpoint to create a product"""
+
+    return products.create(new_item=request)
+
+
+@router.put("/products/{slug}/", response_model=UpdateProduct)
+def update_product(slug: str, request: UpdateProduct):
+    """Endpoint to update a product"""
+
+    return products.update(new_item=request, slug=slug)
+
+
+@router.delete("/products/{slug}")
+def delete_product(slug: str):
+    """Endpoint to delete a product"""
+
+    return products.delete(slug=slug)

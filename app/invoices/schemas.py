@@ -55,3 +55,37 @@ class ClientWithInvoicesOut(ClientsBase):
     Invoices: list[InvoicesOut]
     # summary: float
     # prediction: str
+
+
+class ProductsBase(BaseModel):
+    """Base fields for Product"""
+
+    name: str
+    slug: str
+    price: float
+    quantity: int
+
+    class Config:
+        orm_mode: bool = True
+
+class CreateProduct(ProductsBase):
+    """Fields for creating Product"""
+    ...
+
+class UpdateProduct(ProductsBase):
+    """Fields for updating Product"""
+    ...
+
+class ProductOut(ProductsBase):
+    """Response for Product"""
+
+    slug: str
+    id: int
+
+class ProductWithInvoicesOut(ProductsBase):
+    """Response for a Product with his Invoices operation"""
+
+    slug: str
+    Invoices: list[InvoicesOut]
+    # summary: float
+    # prediction: str
