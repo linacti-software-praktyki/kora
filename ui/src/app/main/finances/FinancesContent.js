@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
 
-function FinancesTable({ itemData }) {
+function FinancesTable({ itemData, setData, data }) {
   const finances = itemData.finances.map((item) => {
     return item;
   });
-
   const [isEdit, setIsEdit] = useState(null);
+
+  if (finances.length === 0) return <p className="text-center py-24">No data</p>;
 
   return (
     <table className="w-full">
@@ -19,16 +19,36 @@ function FinancesTable({ itemData }) {
           })}
           <th className="p-8">Actions</th>
         </tr>
-        {finances.map((item) => {
-          if (item.id === isEdit) return <FinanceRow setIsEdit={setIsEdit} editted item={item} />;
-          return <FinanceRow setIsEdit={setIsEdit} item={item} />;
+        {finances.map((item, index) => {
+          if (item.id === isEdit)
+            return (
+              <FinanceRow
+                setIsEdit={setIsEdit}
+                index={index}
+                data={data}
+                slug={itemData.slug}
+                setData={setData}
+                editted
+                item={item}
+              />
+            );
+          return (
+            <FinanceRow
+              setIsEdit={setIsEdit}
+              index={index}
+              setData={setData}
+              data={data}
+              slug={itemData.slug}
+              item={item}
+            />
+          );
         })}
       </tbody>
     </table>
   );
 }
 
-function FinanceRow({ item, isEdit, setIsEdit, editted }) {
+function FinanceRow({ item, isEdit, index, setIsEdit, editted, setData, slug, data }) {
   const dataTypes = {
     type: 'string',
     description: 'string',
@@ -36,7 +56,12 @@ function FinanceRow({ item, isEdit, setIsEdit, editted }) {
     cashflow_date: 'date',
   };
 
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({
+    type: item.type,
+    description: item.description,
+    amount: item.amount,
+    cashflow_date: item.cashflow_date,
+  });
   const [isChecked, setIsChecked] = useState(item.type === 'INCOME');
   const checkbox = useRef(null);
 
@@ -48,13 +73,22 @@ function FinanceRow({ item, isEdit, setIsEdit, editted }) {
       : setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
+    await fetch(`https://kora.1kb.pl/api/v1/finances/operations/${slug}/${index + 1}/`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+      body: JSON.stringify(inputs),
+    }).then(setData(!data));
   };
 
-  const handleDelete = (id) => {
-    console.log(`deleted: ${id}`);
+  const handleDelete = async (id) => {
+    await fetch(`https://kora.1kb.pl/api/v1/finances/operations/${slug}/${id + 1}/`, {
+      method: 'DELETE',
+    }).then(setData(!data));
   };
 
   return (
@@ -93,6 +127,7 @@ function FinanceRow({ item, isEdit, setIsEdit, editted }) {
               className="py-12 px-8 w-full"
               type={dataTypes[key]}
               placeholder={item[key]}
+              value={item[key]}
             />
           </td>
         );
@@ -122,7 +157,7 @@ function FinanceRow({ item, isEdit, setIsEdit, editted }) {
           </button>
           <button
             className="bg-red py-4 px-8 text-white font-bold w-68"
-            onClick={() => handleDelete(item.id)}
+            onClick={() => handleDelete(index)}
           >
             Delete
           </button>
@@ -132,15 +167,26 @@ function FinanceRow({ item, isEdit, setIsEdit, editted }) {
   );
 }
 
-function FinancesPersonTable({ item, index, setIsPEdit, editted }) {
+function FinancesPersonTable({ item, index, setIsPEdit, editted, setData, data }) {
   const [name, setName] = useState(item.name);
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     console.log(name);
+    await fetch(`https://kora.1kb.pl/api/v1/finances/people/${item.slug}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+      }),
+    }).then(setData(!data));
   };
 
-  const handleDelete = (id) => {
-    console.log(`deleted: ${id}`);
+  const handleDelete = async (slug) => {
+    await fetch(`https://kora.1kb.pl/api/v1/finances/people/${slug}`, {
+      method: 'DELETE',
+    }).then(setData(!data));
   };
 
   const handleInputChange = (e) => {
@@ -173,7 +219,7 @@ function FinancesPersonTable({ item, index, setIsPEdit, editted }) {
               </button>
               <button
                 className="bg-green py-4 px-8 text-white font-bold w-68"
-                onClick={handleSubmit}
+                onClick={() => handleSubmit()}
               >
                 Confirm
               </button>
@@ -182,13 +228,13 @@ function FinancesPersonTable({ item, index, setIsPEdit, editted }) {
             <td className="justify-center flex items-center gap-12 py-12 px-8">
               <button
                 className="bg-blue py-4 px-8 text-white font-bold w-68"
-                onClick={() => setIsPEdit(index)}
+                onClick={() => setIsPEdit(item.slug)}
               >
                 Edit
               </button>
               <button
                 className="bg-red py-4 px-8 text-white font-bold w-68"
-                onClick={() => handleDelete(index)}
+                onClick={() => handleDelete(item.slug)}
               >
                 Delete
               </button>
@@ -196,7 +242,7 @@ function FinancesPersonTable({ item, index, setIsPEdit, editted }) {
           )}
         </div>
       </div>
-      <table className="clear-both ml-12">
+      <table className="clear-both ml-12 mb-36">
         <tbody>
           <tr className="text-left">
             <th>Summary:</th>
@@ -215,35 +261,109 @@ function FinancesPersonTable({ item, index, setIsPEdit, editted }) {
           </tr>
         </tbody>
       </table>
-      <FinancesTable itemData={item} />
+      <FinancesTable itemData={item} data={data} setData={setData} />
+    </div>
+  );
+}
+
+function AddPersonTable({ setAddPerson, setData, data }) {
+  const [name, setName] = useState('');
+
+  const handleAdd = async () => {
+    await fetch(`https://kora.1kb.pl/api/v1/finances/people`, {
+      method: 'POST ',
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+      }),
+    }).then(setData(!data));
+  };
+
+  return (
+    <div className="mt-24">
+      <div className="border-t-4">
+        <input
+          name="name"
+          className="py-12 px-8 text-2xl font-bold float-left"
+          type="string"
+          placeholder="Name"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        />
+        <div className="float-right">
+          <div className="justify-center flex items-center gap-12 py-12 px-8">
+            <button className="bg-green py-4 px-8 text-white font-bold w-68"
+            onClick={() => handleAdd}
+            >Confirm</button>
+            <button
+              className="bg-red py-4 px-8 text-white font-bold w-68"
+              onClick={() => setAddPerson(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 function FinancesContent() {
   const [isPEdit, setIsPEdit] = useState(null);
+  const [addPerson, setAddPerson] = useState(false);
 
   const [data, setData] = useState([]);
+  const [changeData, setChangeData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-        const response = await fetch('https://kora.1kb.pl/api/v1/finances/report/');
-        const resData = await response.json();
-        setData(resData);
+      const response = await fetch('https://kora.1kb.pl/api/v1/finances/report/');
+      const resData = await response.json();
+      setData(resData);
     };
     fetchData();
-  }, []);
+  }, [changeData]);
 
+  const NoData = <p className="text-center py-24">No data</p>;
   return (
     <div className="w-2/3 absolute left-1/2 translate-x-[-50%]">
       <div className="mb-8">
-        <button className="bg-green py-4 px-8 text-white font-bold">Add new person</button>
+        <button
+          className="bg-green py-4 px-8 text-white font-bold"
+          onClick={() => setAddPerson(true)}
+        >
+          Add new person
+        </button>
       </div>
+      {data.length === 0 && NoData}
+      {addPerson && (
+        <AddPersonTable setAddPerson={setAddPerson} data={changeData} setData={setChangeData} />
 
+      )}<br />
       {data.map((item, index) => {
-        if (index === isPEdit)
-          return <FinancesPersonTable setIsPEdit={setIsPEdit} editted item={item} index={index} />;
-        return <FinancesPersonTable setIsPEdit={setIsPEdit} item={item} index={index} />;
+        if (item.slug === isPEdit && !addPerson)
+          return (
+            <FinancesPersonTable
+              setIsPEdit={setIsPEdit}
+              editted
+              item={item}
+              setData={setChangeData}
+              data={changeData}
+              index={index}
+            />
+          );
+        return (
+          <FinancesPersonTable
+            setIsPEdit={setIsPEdit}
+            item={item}
+            setData={setChangeData}
+            data={changeData}
+            index={index}
+          />
+        );
       })}
     </div>
   );
